@@ -4,8 +4,19 @@
 
     'summary': """Equipment Controls""",
 
+    'description':"""
+        Control de Equipos de Cómputo
+               -Permisos
+               -Dispositivos y Equipos de Computo
+               -Sucursales
+               -Departamentos
+               -Usuarios
+               -Graficos Estadisticos
+               -Historial
 
-    'author': "Andrea Rocio Gutierrez",
+    """,
+
+    'author': "Andrea Magdalena Rocio Gutierrez",
     'website': "andyrociogtz@gmail.com",
 
     'category': 'Generic Modules',
@@ -16,13 +27,15 @@
 
     # always loaded
     'data': [
-         #'view/openacademy_course_view.xml',
+          'view/proposito_view.xml'
+         #'view/equipo_computo_view.xml',
          #'view/openacademy_session_view.xml',
          #'view/partner_view.xml',
-        #'templates.xml',
+         #'templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/openacademy_course_demo.xml',
+        #'demo/openacademy_course_demo.xml',
     ],
     'installable':True,
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="equipo_computo_vew"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">equipo.computo.vew</field> 
+        	<field name="model">equipo.computo</field> 
+        	<field name="arch" type="xml">
+        		<form string="Equipo Form">
+        			<sheet>
+        				<group>
+        					<field name="ram">memoria_ram</field> 
+            				<field name="dd">disco_duro</field>
+            				<field name="procesador">procesador</field>
+            				<field name="so">sistema Operativo</field>
+ 		           			<field name="ofice">office 2010</field>
+        				</group>          			        			
+ 		        	</sheet>
+        		</form>
+        	</field> 
+        </record>
+    </data>
+</openerp>

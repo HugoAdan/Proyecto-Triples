@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="proposito_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">proposito.view</field> 
+        	<field name="model">equipment.proposito</field> 
+        	<field name="arch" type="xml">
+        		<form string="Proposito Form">
+        				<field name="description">
+                            <p>Gestionar de manera optima los dispositivos  y equipos de computo pertenecientes  a cada sucursal manejada por la empresa Calzado el Maraton. 
+                            Mejor visualizacion de informacion, dinamico, intuitivo y calculos estadisticos representados en graficos.
+                            </p>
+                        </field>
+        		</form>
+        	</field> 
+        </record>
+        <!--Accion del Sistema-->
+		<record model="ir.actions.act_window" id="proposito_list_action">
+            <field name="name">Proposito del Sistema</field>
+            <field name="res_model">equipment.proposito</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Proposito del Sistema
+                </p>
+            </field>
+        </record>
+             <!-- Nivel de menu : no parent -->
+        <menuitem id="main_proposito_menu" name="Computer Equipment Control"/>
+            <!-- Se necesita un primer nivel en el menú de la izquierda antes de usar action= attribute -->
+        <menuitem id="proposito_menu" name="Inicio"
+                  parent="main_proposito_menu"/>
+            <!-- El siguiente menuitem debe aparecer despues de main_proposito_menu 1ero y despues de su acción proposito_list_action-->
+        <menuitem id="sistema_menu" name="Proposito del Sistema" parent="proposito_menu"
+                  action="proposito_list_action"/>
+            <!-- Ubicacion completa ID:
+             action="proposito.proposito_list_action"
+             No se requiere cuando pertenece al mismo sistema -->
+    </data>
+</openerp>
