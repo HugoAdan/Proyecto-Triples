@@ -27,8 +27,8 @@
 
     # always loaded
     'data': [
-          'view/proposito_view.xml'
-         #'view/equipo_computo_view.xml',
+          'view/sesion_plataforma_view.xml',
+          'view/equipo_computo_view.xml',
          #'view/openacademy_session_view.xml',
          #'view/partner_view.xml',
          #'templates.xml',

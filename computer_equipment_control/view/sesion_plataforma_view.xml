@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="sesion_plataforma_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">sesion.plataforma.view</field> 
+        	<field name="model">equipment.sesion</field> 
+        	<field name="arch" type="xml">
+        		<form string="Sesion Form">
+                    <sheet>
+                        <group>
+        				    <field name="plataform_user"/>
+                            <field name="plataform_username"/>
+                            <field name="plataform_contrasena"/>
+                            <field name="plataform_rango"/>
+                        </group>
+                    </sheet>    
+        		</form>
+        	</field> 
+        </record>
+        <!--Accion del Sistema-->
+		<record model="ir.actions.act_window" id="sesion_list_action">
+            <field name="name">Sesiones de usuarios</field>
+            <field name="res_model">equipment.sesion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Sesiones de Usuario
+                </p>
+            </field>
+        </record>
+             <!-- Nivel de menu : no parent -->
+        <menuitem id="main_sesion_menu" name="Computer Equipment Control"/>
+            <!-- Se necesita un primer nivel en el menú de la izquierda antes de usar action= attribute -->
+        <menuitem id="sesion_menu" name="Inicio"
+                  parent="main_sesion_menu"/>
+            <!-- El siguiente menuitem debe aparecer despues de main_proposito_menu 1ero y despues de su acción sesion_platraforma_action-->
+        <menuitem id="sistema_menu" name="Sesiones de usuarios" parent="sesion_menu"
+                  action="sesion_list_action"/>
+            <!-- Ubicacion completa ID:
+             action="proposito.sesion_platraforma_action"
+             No se requiere cuando pertenece al mismo sistema -->
+    </data>
+</openerp>
