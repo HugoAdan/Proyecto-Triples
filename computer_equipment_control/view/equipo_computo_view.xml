@@ -2,23 +2,32 @@
 <openerp>
     <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
     <data>
-        <record model ="ir.ui.view" id="equipo_computo_vew"> <!--Tabla para almacenar las vistas -->
+        <record model ="ir.ui.view" id="equipo_computo_view"> <!--Tabla para almacenar las vistas -->
         <!--Campos-->
-        	<field name="name">equipo.computo.vew</field> 
-        	<field name="model">equipo.computo</field> 
-        	<field name="arch" type="xml">
+        	<field name="name">equipo.computo.view</field> 
+            <field name="model">equipment.control</field> 
+            <field name="arch" type="xml">
         		<form string="Equipo Form">
         			<sheet>
         				<group>
-        					<field name="ram">memoria_ram</field> 
-            				<field name="dd">disco_duro</field>
-            				<field name="procesador">procesador</field>
-            				<field name="so">sistema Operativo</field>
- 		           			<field name="ofice">office 2010</field>
+                            <field name="ram"/>
+            				<field name="dd"/>
+            				<field name="procesador"/>
+            				<field name="so"/>
+ 		           			<field name="ofice"/>
         				</group>          			        			
  		        	</sheet>
         		</form>
         	</field> 
         </record>
+        <record model="ir.actions.act_window" id="equipo_list_action">
+            <field name="name">Equipos de Computo</field>
+            <field name="res_model">equipment.control</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="equipo_menu" name="Equipos"
+                  parent="sesion_menu"
+                  action="equipo_list_action"/>
     </data>
 </openerp>

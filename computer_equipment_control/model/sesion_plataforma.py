@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models,fields, _
+from openerp import api,models,fields, _
 
 
 """
