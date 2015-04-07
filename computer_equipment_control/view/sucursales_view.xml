@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="sucursales_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">sucursales.view</field> 
+            <field name="model">equipment.sucursal</field> 
+            <field name="arch" type="xml">
+        		<form string="Sucursales Form">
+        			<sheet>
+        				<group>
+                            <field name="sucursal"/>
+            				<field name="ubicacion_sucursal"/>
+            				<field name="numero_sucursal"/>
+        				</group>          			        			
+ 		        	</sheet>
+        		</form>
+        	</field> 
+        </record>
+        <record model="ir.actions.act_window" id="sucursal_list_action">
+            <field name="name">Sucursales</field>
+            <field name="res_model">equipment.sucursal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="sucursal_menu" name="Sucursales"
+                  parent="sesion_menu"
+                  action="sucursal_list_action"/>
+    </data>
+</openerp>

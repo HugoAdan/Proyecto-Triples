@@ -29,7 +29,7 @@
     'data': [
           'view/sesion_plataforma_view.xml',
           'view/equipo_computo_view.xml',
-         #'view/openacademy_session_view.xml',
+          'view/sucursales_view.xml',
          #'view/partner_view.xml',
          #'templates.xml',
     ],
