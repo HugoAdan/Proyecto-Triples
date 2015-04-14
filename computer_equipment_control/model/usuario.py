@@ -10,6 +10,7 @@ class Usuario(models.Model):
     
 	_inherit = 'res.partner'
 
-    username = fields.Char(defautl=False)
-    
-    password = fields.Char(defautl=False)
+	username = fields.Boolean(defautl=False)
+
+    session_ids = fields.Many2many('openacademy.session',
+                                   string="Session as attendee",readonly=True)
