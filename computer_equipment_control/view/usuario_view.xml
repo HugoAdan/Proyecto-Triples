@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+
+        <record model="ir.actions.act_window" id="users_list_action">
+            <field name="name">Usuarios</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="arch" type="xml">
+                <form string="Usuario Form">
+                    <sheet>
+                        <group>
+                            <field name="username"/>
+                            <field name="password"/>
+                        </group>        
+                    </sheet>
+                </form>
+            </field> 
+        </record>
+
+        <menuitem id="users_menu" name="Usuarios"
+                  parent="sesion_menu"
+                  action="users_list_action"/>
+    </data>
+</openerp>

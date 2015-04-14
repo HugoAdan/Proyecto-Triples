@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="equipment_depto_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+            <field name="name">equipment.depto.view</field> 
+            <field name="model">equipment.depto</field> 
+            <field name="arch" type="xml">
+                <form string="Departamento Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="responsable_id"/>
+                        </group>  
+                        <group>
+                            <label for="sucursal_ids"/>
+                            <field name="sucursal_ids"/>
+                        </group>         
+                    </sheet>
+                </form>
+            </field> 
+        </record>
+
+        <record model="ir.actions.act_window" id="deptos_list_action">
+            <field name="name">Departamentos</field>
+            <field name="res_model">equipment.depto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="deptos_menu" name="Departamentos"
+                  parent="sesion_menu"
+                  action="deptos_list_action"/>
+    </data>
+</openerp>
