@@ -12,8 +12,8 @@ class Sucursal(models.Model):
                                  #para crear tabla en postgres
 
     name = fields.Char(string="Sucursal", required=True) # Campo a generarse en la tabla _name
-    street = fields.Char(string="Street", required=True) # Campo a generarse en la tabla _name
-    suburb = fields.Char(string="Suburb", required=True) # Campo a generarse en la tabla _name
+    street = fields.Char(string="Calle", required=True) # Campo a generarse en la tabla _name
+    suburb = fields.Char(string="Colonia", required=True) # Campo a generarse en la tabla _name
     number = fields.Char(string="Numero") # Campo a generarse en la tabla _name
     
     responsible_id = fields.Many2one("res.users",

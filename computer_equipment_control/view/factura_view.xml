@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="factura_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">factura.view</field> 
+            <field name="model">equipment.factura</field> 
+            <field name="arch" type="xml">
+        		<form string="Factura Form">
+        			<sheet>
+        				<group>
+                            <field name="folio"/>
+                            <field name="provider"/>
+            				<field name="date"/>
+        				</group> 
+                        <group>
+                            <label for="equipos_ids"/>
+                            <field name="equipos_ids"/>
+                        </group>          			
+ 		        	</sheet>
+        		</form>
+        	</field> 
+        </record>
+
+        <record model="ir.actions.act_window" id="factura_list_action">
+            <field name="name">Registro de Factura</field>
+            <field name="res_model">equipment.factura</field>
+        </record>
+    </data>
+</openerp>

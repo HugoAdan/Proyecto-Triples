@@ -29,7 +29,7 @@
                                 </field>
                             </page>
                             <page string="About">
-                                This is an example of notebooks
+                                Ejemplo
                             </page>
                         </notebook>
  		        	</sheet>
@@ -45,7 +45,7 @@
             <field name="name">course.tree.view</field>
             <field name="model">equipment.sucursal</field>
             <field name="arch" type="xml">
-                <tree string="Course">
+                <tree string="Sucursal">
                     <field name="name"/>
                     <field name="suburb"/>
                     <field name="responsible_id"/>

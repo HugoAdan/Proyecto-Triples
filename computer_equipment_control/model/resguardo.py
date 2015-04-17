@@ -11,5 +11,4 @@ class Resguardo(models.Model):
     _name = 'equipment.resguardo' # String crea entidad tomado por odoo 
                                  #para crear tabla en postgres
         
-    responsable_id = fields.One2many("res.users",
-                                    ondelete='set null',string="Responsable", index=True)
+   

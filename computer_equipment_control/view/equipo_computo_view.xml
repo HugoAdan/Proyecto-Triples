@@ -8,18 +8,69 @@
             <field name="model">equipment.control</field> 
             <field name="arch" type="xml">
         		<form string="Equipo Form">
+                     <!--<header>
+                        <button name="button_register" type="workflow"
+                                string="Reset to record"
+                                states="invoice,done"/>
+
+                        <button name="button_invoice" type="workflow"
+                                string="Invoice" states="record"
+                                class="oe_highlight"/>
+
+                        <button name="button_done" type="workflow"
+                                string="Mark as done" states="invoice"
+                                class="oe_highlight"/>
+
+                        <field name="state" widget="statusbar"/>
+                    </header>-->
         			<sheet>
-        				<group>
+                        <group string="Registro de Equipos">
+                            <field name="tipo"/>
                             <field name="ram"/>
             				<field name="dd"/>
             				<field name="procesador"/>
             				<field name="so"/>
  		           			<field name="ofice"/>
-        				</group>          			        			
+                            <field name="responsible_id"/>
+        				</group>
+                        <group string="Regitro de Factura">
+                            <field name="folio"/>
+                            <field name="provider"/>
+                            <field name="date"/>
+                        </group>
+                            <!--<field name="equipos_ids"/>
+                           
+                        <notebook>
+                            <page string="Facturas">
+                                <field name="equipos_ids">
+                                    <tree string="Registered sessions" editable = "bottom">
+                                        <field name="folio"/>
+                                        <field name="provider"/>
+                                        <field name="date"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>	  -->      			
  		        	</sheet>
         		</form>
         	</field> 
         </record>
+
+        <!--Vista Tree-->
+        <record model="ir.ui.view" id="equipos_tree_view">
+            <field name="name">equipos.tree.view</field>
+            <field name="model">equipment.control</field>
+            <field name="arch" type="xml">
+                <tree string="equipos">
+                    <field name="tipo"/>
+                    <field name="responsible_id"/>
+                    <field name="folio"/>
+                </tree>
+            </field>
+        </record>
+
+
+
         <record model="ir.actions.act_window" id="equipo_list_action">
             <field name="name">Equipos de Computo</field>
             <field name="res_model">equipment.control</field>

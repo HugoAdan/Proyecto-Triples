@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <!--Datos a insetar en odoo_curso, datos de vistas, views , acctions-->
+    <data>
+        <record model ="ir.ui.view" id="historial_view"> <!--Tabla para almacenar las vistas -->
+        <!--Campos-->
+        	<field name="name">historial.view</field> 
+            <field name="model">equipment.historial</field> 
+            <field name="arch" type="xml">
+        		<form string="Historial Form">
+        			<sheet>
+        				<group>
+                            <field name="equipoh_ids"/>
+                            <field name="responsible_id"/>
+        				</group>           			
+ 		        	</sheet>
+        		</form>
+        	</field> 
+        </record>
+
+        <record model="ir.actions.act_window" id="historial_list_action">
+            <field name="name">Historial de Movimientos</field>
+            <field name="res_model">equipment.historial</field>
+        </record>
+         <menuitem id="historial_menu" name="Historial"
+                  parent="sesion_menu"
+                  action="historial_list_action"/>
+    </data>
+</openerp>

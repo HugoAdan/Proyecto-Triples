@@ -16,4 +16,3 @@ class Depto(models.Model):
                                     ondelete='set null',string="Responsable", index=True)
     sucursal_ids = fields.Many2many("equipment.sucursal",
                                     ondelete='set null',string="Sucursal", index=True)
-       #departamentos_ids = fields.One2many('equipment.sucursal', 'deptos_id', string="Sucursal")
