@@ -9,6 +9,7 @@
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//h2//field[@name='login']" position="after">
+                    <label for="alias" class="oe_edit_only" string="Alias"/>
                     <h2><field name="alias"/></h2>
                 </xpath>
             </field>
