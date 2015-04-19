@@ -10,7 +10,7 @@
         		<form string="Equipo Form">
                     <sheet>
                         <group string="Registro de Equipos">
-                            <field name="tipo"/>
+                            <field name="tipo" widget="selection"/>
                             <field name="ram"/>
             				<field name="dd"/>
             				<field name="procesador"/>

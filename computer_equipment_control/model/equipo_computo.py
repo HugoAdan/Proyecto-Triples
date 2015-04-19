@@ -11,7 +11,15 @@ class Control(models.Model):
     _name = 'equipment.control' # String crea entidad tomado por odoo 
                                  #para crear tabla en postgres
 
-    tipo = fields.Char(string="Tipo", required=True) # Campo a generarse en la tabla _name
+    tipo = fields.Selection([
+         ('server', "Servidor"),
+         ('desktop', "Computadora de escritorio"),
+         ('imac', "Computadora Mac (apple)"),
+         ('laptop', "Laptop(Portatil, netbook)"),
+         ('tablet', "Tableta electronica"),
+    ], required = True)
+
+
     ram = fields.Char(string="RAM", required=True) # Campo a generarse en la tabla _name
     dd = fields.Char(string="Disco Duro", required=True) # Campo a generarse en la tabla _name
     procesador = fields.Char(string="Procesador", required=True) # Campo a generarse en la tabla _name
@@ -25,6 +33,7 @@ class Control(models.Model):
     folio = fields.Char(string="Folio", required=True) # Campo a generarse en la tabla _name
     provider = fields.Char(string="Proveedor", required=True) # Campo a generarse en la tabla _name
     date = fields.Date(string="Fecha", default=fields.Date.today) # Campo a generarse en la tabla _name
+    
 
     usuarios_ids = fields.One2many('res.users','equipos_ids',string="Equipos")
 
