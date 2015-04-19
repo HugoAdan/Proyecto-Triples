@@ -8,24 +8,9 @@
             <field name="model">equipment.control</field> 
             <field name="arch" type="xml">
         		<form string="Equipo Form">
-                     <!--<header>
-                        <button name="button_register" type="workflow"
-                                string="Reset to record"
-                                states="invoice,done"/>
-
-                        <button name="button_invoice" type="workflow"
-                                string="Invoice" states="record"
-                                class="oe_highlight"/>
-
-                        <button name="button_done" type="workflow"
-                                string="Mark as done" states="invoice"
-                                class="oe_highlight"/>
-
-                        <field name="state" widget="statusbar"/>
-                    </header>-->
         			<sheet>
                         <group string="Registro de Equipos">
-                            <field name="tipo"/>
+                            <field name="tipo" widget="selection"/>
                             <field name="ram"/>
             				<field name="dd"/>
             				<field name="procesador"/>
