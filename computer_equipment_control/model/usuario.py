@@ -8,9 +8,8 @@ Este modulo crea el modelo Usuario
 #Se crea la clase Usuario
 class Usuario(models.Model):
     
-	_inherit = 'res.partner'
+	_inherit = 'res.users'
 
-	username = fields.Boolean(defautl=False)
+	alias = fields.Char()
 
-    session_ids = fields.Many2many('openacademy.session',
-                                   string="Session as attendee",readonly=True)
+    
