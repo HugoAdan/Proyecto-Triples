@@ -12,4 +12,7 @@ class Usuario(models.Model):
 
 	alias = fields.Char()
 
+	equipos_ids = fields.Many2many("equipment.control",
+                                    ondelete='set null',string="Equipos", index=True)
+
     

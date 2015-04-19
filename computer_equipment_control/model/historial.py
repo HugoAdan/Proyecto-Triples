@@ -14,3 +14,17 @@ class Historial(models.Model):
 
     responsible_id = fields.Many2one("res.users",
                                     ondelete='set null',string="Usuario del equipo", index=True)
+    
+
+    #equipoh_ids = fields.Many2one('equipment.control','historiale_ids', string="Historial")
+
+    #responsible_id = fields.Many2one("res.users",
+     #                               ondelete='set null',string="Usuario del equipo", index=True)
+	
+
+	#Fecha de movimiento o cambio
+	#Relaciones-----
+	#Tipo de equipo
+	#Responsable del equipo
+	#Depto que pertenece
+	#Sucursal
