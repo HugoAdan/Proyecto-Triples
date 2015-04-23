@@ -14,5 +14,14 @@ class Depto(models.Model):
         
     responsable_id = fields.Many2one("res.users",
                                     ondelete='set null',string="Responsable", index=True)
+    asigndisp = fields.Selection([
+         ('imprnormal', "Impresora"),
+         ('impretiquetas', "Impresora de Etiquetas"),
+         ('copiadora', "Copiadora"),
+         ('imprescaner', "Impresora y Scanner"),
+         ('scaner', "Scanner"),
+    ], required = True, string="Dispositivo Externo")
+
+
     sucursal_ids = fields.Many2many("equipment.sucursal",
                                     ondelete='set null',string="Sucursal", index=True)

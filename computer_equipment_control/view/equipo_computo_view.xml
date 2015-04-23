@@ -8,14 +8,21 @@
             <field name="model">equipment.control</field> 
             <field name="arch" type="xml">
         		<form string="Equipo Form">
+                    <header>
+                        <button name="action_stock" type="workflow" string="">
+                    </header>
+
+
+
+
                     <sheet>
                         <group string="Registro de Equipos">
-                            <field name="tipo" widget="selection"/>
-                            <field name="ram"/>
-            				<field name="dd"/>
-            				<field name="procesador"/>
-            				<field name="so"/>
- 		           			<field name="ofice"/>
+                            <field name="tipo_id"/>
+ 		           			<field name="ram"/>
+                            <field name="dd"/>
+                            <field name="procesador_id"/>
+                            <field name="software_id"/>
+                            <field name="office_id"/>
                             <field name="responsible_id"/>
         				</group>
                         <group string="Regitro de Factura">
@@ -34,9 +41,8 @@
             <field name="model">equipment.control</field>
             <field name="arch" type="xml">
                 <tree string="equipos">
-                    <field name="tipo"/>
+                    <field name="tipo_id"/>
                     <field name="responsible_id"/>
-                    <field name="folio"/>
                 </tree>
             </field>
         </record>

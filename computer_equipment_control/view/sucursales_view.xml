@@ -41,8 +41,8 @@
 
 
         <!--Vista Tree-->
-        <record model="ir.ui.view" id="course_tree_view">
-            <field name="name">course.tree.view</field>
+        <record model="ir.ui.view" id="sucursal_tree_view">
+            <field name="name">sucursal.tree.view</field>
             <field name="model">equipment.sucursal</field>
             <field name="arch" type="xml">
                 <tree string="Sucursal">
