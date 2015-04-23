@@ -39,34 +39,34 @@ class Control(models.Model):
     usuarios_ids = fields.One2many('res.users','equipos_ids',string="Equipos")
 
    #Workflow
-   state = fields.Selection([
-                            ('stock', "Stock"),
-                            ('disp', "Disponible"),
-                            ('asignado', "Asignado"),
-                            ('mante', "Mantenimiento"),
-                            ('baja', "Baja"),
-                            ])
+   #state = fields.Selection([
+    #                        ('stock', "Stock"),
+     #                       ('disp', "Disponible"),
+      #                      ('asignado', "Asignado"),
+       #                     ('mante', "Mantenimiento"),
+        #                    ('baja', "Baja"),
+         #                   ])
 
     #Metodos para el Workflow
-    @api.one
-    def action_stock(self):
-        self.state = 'stock'
+    #@api.one
+    #def action_stock(self):
+     #   self.state = 'stock'
 
-    @api.one
-    def action_disp(self):
-        self.state = 'disp'
+    #@api.one
+    #def action_disp(self):
+     #   self.state = 'disp'
 
-    @api.one
-    def action_asignado(self):
-        self.state = 'asignado'
+   # @api.one
+    #def action_asignado(self):
+     #   self.state = 'asignado'
 
-    @api.one
-    def action_mante(self):
-        self.state = 'mante'
+    #@api.one
+    #def action_mante(self):
+     #   self.state = 'mante'
 
-    @api.one
-    def action_baja(self):
-        self.state = 'baja'
+    #@api.one
+    #def action_baja(self):
+     #   self.state = 'baja'
 
 
         

@@ -8,12 +8,9 @@
             <field name="model">equipment.control</field> 
             <field name="arch" type="xml">
         		<form string="Equipo Form">
-                    <header>
+                    <!--<header>
                         <button name="action_stock" type="workflow" string="">
-                    </header>
-
-
-
+                    </header>-->
 
                     <sheet>
                         <group string="Registro de Equipos">
