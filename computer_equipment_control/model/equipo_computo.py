@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models,fields, _
-
+from openerp import api, exceptions, fields, models, _
 
 """
 Este modulo crea el modelo Control
@@ -38,35 +37,33 @@ class Control(models.Model):
 
     usuarios_ids = fields.One2many('res.users','equipos_ids',string="Equipos")
 
+
+    active = fields.Boolean(default=True)
    #Workflow
-   #state = fields.Selection([
-    #                        ('stock', "Stock"),
-     #                       ('disp', "Disponible"),
-      #                      ('asignado', "Asignado"),
-       #                     ('mante', "Mantenimiento"),
-        #                    ('baja', "Baja"),
-         #                   ])
+    state = fields.Selection([
+           ('disponible', "Disponible"),
+           ('asignado', "Asignado"),
+           ('mantenimiento', "Mantenimiento"),
+           ('baja', "Baja"),
+    ], default='disponible')
 
     #Metodos para el Workflow
-    #@api.one
-    #def action_stock(self):
-     #   self.state = 'stock'
+    @api.one
+    def accion_disponible(self):
+        self.state = 'disponible'
 
-    #@api.one
-    #def action_disp(self):
-     #   self.state = 'disp'
+    @api.one
+    def accion_asignado(self):
+        self.state = 'asignado'
 
-   # @api.one
-    #def action_asignado(self):
-     #   self.state = 'asignado'
+    @api.one
+    def accion_mantenimiento(self):
+        self.state = 'mantenimiento'
 
-    #@api.one
-    #def action_mante(self):
-     #   self.state = 'mante'
-
-    #@api.one
-    #def action_baja(self):
-     #   self.state = 'baja'
+    @api.one
+    def accion_baja(self):
+        self.state = 'baja'
+        self.active = False
 
 
         
@@ -74,21 +71,21 @@ class Control(models.Model):
 class SistemaOperativo(models.Model):
     _name = 'equipment.software'
 
-    name = fields.Char(string="Sistema Operativo", required=True)
-    ver =  fields.Char(string="Version", required=True)
+    name = fields.Char(readonly = True,compute="_get_full_software")
+    swname =  fields.Char(string="Sistema Operativo", required=True, default="SO")
+    version =  fields.Char(string="Version", required=True, default="1.0")
     
+    @api.one
+    @api.depends("swname", "version")
+    def _get_full_software(self):
+        self.name = str(self.swname) + " " +str(self.version)
+        
 
 
 class tipo(models.Model):
     _name = 'equipment.tipo'
     
     name = fields.Char(string="Tipo de Equipo", required=True)
-    
-    asignado = fields.Boolean(default=True)
-    baja = fields.Boolean(default=True)
-    diponible = fields.Boolean(default=True)
-    mantenimiento = fields.Boolean(default=True)
-
 
 
 class office(models.Model):

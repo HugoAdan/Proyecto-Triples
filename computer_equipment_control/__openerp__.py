@@ -33,6 +33,7 @@
            'view/depto_view.xml',
            'view/usuario_view.xml',
            #'view/historial_view.xml',
+           'workflow/equipo_workflow_view.xml',
            'security/ir.model.access.csv'
          #'templates.xml',
     ],

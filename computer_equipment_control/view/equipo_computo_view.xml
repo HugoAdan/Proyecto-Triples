@@ -8,12 +8,31 @@
             <field name="model">equipment.control</field> 
             <field name="arch" type="xml">
         		<form string="Equipo Form">
-                    <!--<header>
-                        <button name="action_stock" type="workflow" string="">
-                    </header>-->
+                    <header>
+                        <button name="button_accion_disponible" type="workflow"
+                                string="Disponible"
+                                states="mantenimiento,asignado"/>
+
+                        <button name="button_accion_asignado" type="workflow"
+                                string="Asignado" 
+                                states="disponible"
+                                class="oe_highlight"/>
+
+                        <button name="button_accion_mantenimiento" type="workflow"
+                                string="Mantenimiento" 
+                                states="asignado"
+                                class="oe_highlight"/>
+
+                        <button name="button_accion_baja" type="workflow"
+                                string="Baja"
+                                states="mantenimiento"
+                                class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
 
                     <sheet>
                         <group string="Registro de Equipos">
+                            <field name="active"/>
                             <field name="tipo_id"/>
  		           			<field name="ram"/>
                             <field name="dd"/>
@@ -32,12 +51,15 @@
         	</field> 
         </record>
 
+
+
         <!--Vista Tree-->
         <record model="ir.ui.view" id="equipos_tree_view">
             <field name="name">equipos.tree.view</field>
             <field name="model">equipment.control</field>
             <field name="arch" type="xml">
                 <tree string="equipos">
+                    <field name="id"/>
                     <field name="tipo_id"/>
                     <field name="responsible_id"/>
                 </tree>
