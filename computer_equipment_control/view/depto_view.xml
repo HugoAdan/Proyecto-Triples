@@ -10,9 +10,9 @@
                 <form string="Departamento Form">
                     <sheet>
                         <group>
-                            <field name="name"/>
-                            <field name="asigndisp" widget="selection"/>
+                            <field name="name"/>                                     
                             <field name="responsable_id"/>
+                            <field name="dispexternos_id"/> 
                         </group>  
                         <group>
                             <label for="sucursal_ids"/>
@@ -24,18 +24,32 @@
         </record>
 
 
-        <!--Vista Tree-->
+        <!--Vista Tree Departamento-->
         <record model="ir.ui.view" id="depto_tree_view">
             <field name="name">depto.tree.view</field>
             <field name="model">equipment.depto</field>
             <field name="arch" type="xml">
                 <tree string="Departamentos">
                     <field name="name"/>
-                    <field name="asigndisp"/>
                     <field name="responsable_id"/>
                 </tree>
             </field>
         </record>
+
+
+
+        <!--Vista Tree Dispositivos Externos-->
+        <record model="ir.ui.view" id="vista_tree_depto">
+            <field name="name">vista.tree.depto</field>
+            <field name="model">equipment.dispositivosexternos</field>
+            <field name="arch" type="xml">
+                <tree string="Dispositivos Externos">
+                    <field name="name"/>
+                    <field name="descripcion"/>
+                </tree>
+            </field>
+        </record>
+
 
 
         <record model="ir.actions.act_window" id="deptos_list_action">

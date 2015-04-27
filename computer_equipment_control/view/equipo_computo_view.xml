@@ -32,14 +32,14 @@
 
                     <sheet>
                         <group string="Registro de Equipos">
+                            <field name="responsible_id"/>
                             <field name="active"/>
                             <field name="tipo_id"/>
  		           			<field name="ram"/>
                             <field name="dd"/>
                             <field name="procesador_id"/>
                             <field name="software_id"/>
-                            <field name="office_id"/>
-                            <field name="responsible_id"/>
+                            <field name="programas_id"/>
         				</group>
                         <group string="Regitro de Factura">
                             <field name="folio"/>
@@ -53,7 +53,7 @@
 
 
 
-        <!--Vista Tree-->
+        <!--Vista Tree Equipos-->
         <record model="ir.ui.view" id="equipos_tree_view">
             <field name="name">equipos.tree.view</field>
             <field name="model">equipment.control</field>
@@ -62,6 +62,19 @@
                     <field name="id"/>
                     <field name="tipo_id"/>
                     <field name="responsible_id"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!--Vista Tree Programas-->
+        <record model="ir.ui.view" id="vista_tree_programas">
+            <field name="name">vista.tree.programas</field>
+            <field name="model">equipment.programas</field>
+            <field name="arch" type="xml">
+                <tree string="Programas">
+                    <field name="name"/>
+                    <field name="licencia"/>
                 </tree>
             </field>
         </record>

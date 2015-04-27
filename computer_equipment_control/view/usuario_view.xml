@@ -15,8 +15,13 @@
             </field>
         </record>
 
-        <menuitem id="users_menu" name="Usuarios"
-                  parent="sesion_menu"
+        <!-- Nivel de menu : no parent -->
+        <menuitem id="main_sesion_menu" name="Computer Equipment Control"/>
+            <!-- Se necesita un primer nivel en el menú de la izquierda antes de usar action= attribute -->
+        <menuitem id="sesion_menu" name="Inicio"
+                  parent="main_sesion_menu"/>
+            <!-- El siguiente menuitem debe aparecer despues de main_proposito_menu 1ero y despues de su acción sesion_platraforma_action-->
+        <menuitem id="sistema_menu" name="Usuarios" parent="sesion_menu"
                   action="base.action_res_users"/>
     </data>
 </openerp>

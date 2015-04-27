@@ -26,16 +26,13 @@
     'depends': ['base',],
 
     # always loaded
-    'data': [
-           'view/sesion_plataforma_view.xml',
+    'data': [            
+           'view/usuario_view.xml',
            'view/equipo_computo_view.xml',
            'view/sucursales_view.xml',
            'view/depto_view.xml',
-           'view/usuario_view.xml',
-           #'view/historial_view.xml',
            'workflow/equipo_workflow_view.xml',
            'security/ir.model.access.csv'
-         #'templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

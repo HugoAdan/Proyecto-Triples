@@ -19,11 +19,11 @@ class Control(models.Model):
     procesador_id = fields.Many2one("equipment.procesador",
                                     ondelete='set null',string="Procesador", index=True)
     
-    software_id = fields.Many2one("equipment.software",
+    software_id = fields.Many2one("equipment.so",
                                     ondelete='set null',string="Sistema Operativo", index=True)
 
-    office_id = fields.Many2one("equipment.office",
-                                    ondelete='set null',string="Office", index=True)
+    programas_id = fields.Many2many("equipment.programas",
+                                    ondelete='set null',string="Programas", index=True)
 
 
     responsible_id = fields.Many2one("res.users",
@@ -65,11 +65,44 @@ class Control(models.Model):
         self.state = 'baja'
         self.active = False
 
+    
 
-        
+
+    #Metodos creacion de historial
+    def write(self, cr, uid, ids, values, context=None):
+        equipo_cambio_obj = self.pull.get(equipment.cambios)#
+        import pdb; pdb.set_trace()
+        equipo_cambio_obj.create(cr,uid, {
+            'equipo_id': self.id,
+            'tipo_id': self.tipo_id,
+            'ram': self.ram,
+            'dd': self.dd,
+            'procesador_id': self.procesador_id,
+            'software_id': self.software_id,
+            'programas_id': self.programas_id,
+            'responsible_id': self.responsible_id,
+            }
+
+        )
+        return super(Control, self).write(cr, uid, ids, values, context=context)
+
+
+   # @api.one
+    #def create(self, cr, uid, context=None):
+       # equipo_cambio_obj = self.pull.get(equipment.cambios)#
+        #equipo_cambio_obj.create(cr,uid)
+        return super(Control, self).create(cr, uid, ids, values, context=context)
+
+        #
+    #def unlink(self, cr, uid, ids, values, context=None):
+        #equipo_cambio_obj = self.pull.get(equipment.cambios)#
+        #equipo_cambio_obj.create(cr,uid)
+    #    return super(Control, self).unlink(cr, uid, ids, values, context=context)
+
+       
 
 class SistemaOperativo(models.Model):
-    _name = 'equipment.software'
+    _name = 'equipment.so'
 
     name = fields.Char(readonly = True,compute="_get_full_software")
     swname =  fields.Char(string="Sistema Operativo", required=True, default="SO")
@@ -88,15 +121,34 @@ class tipo(models.Model):
     name = fields.Char(string="Tipo de Equipo", required=True)
 
 
-class office(models.Model):
-    _name = 'equipment.office'
+class programas(models.Model):
+    _name = 'equipment.programas'
 
-    name = fields.Char(string="Nombre", required=True)
-    version = fields.Char(required=True)
+    name = fields.Char(readonly = True,compute="_get_full_programa")
+    program_name =  fields.Char(string="Nombre", required=True, default="Programa")
+    version = fields.Char(string="Version", required=True, default="Version")
+    licencia = fields.Char(string="Licencia", required=True, default="")
+    descripcion = fields.Char(string="Descripcion", required=True, default="")
+    
+    
+ 
+    @api.one
+    @api.depends("program_name", "version")
+    def _get_full_programa(self):
+        self.name = str(self.program_name) + " " +str(self.version)
+
+
 
 
 class procesador(models.Model):
     _name = 'equipment.procesador'
 
-    name = fields.Char(string="Nombre", required=True)
-    nucleo =  fields.Char(required=True)
+    name = fields.Char(readonly = True,compute="_get_full_procesador")
+    procesadorname =  fields.Char(string="Procesador", required=True, default="Procesador")
+    nucleo =  fields.Char(required=True, default="Nucleo")
+
+    @api.one
+    @api.depends("procesadorname", "nucleo")
+    def _get_full_procesador(self):
+        self.name = str(self.procesadorname) + " " +str(self.nucleo)
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--Definicion del flujo de trabajo principal-->
+        <!--Unico flujo de trabajo del modelo (Clase) Equipo_Computo-->
+
+        <record model="workflow" id="wkf_equipos">
+            <field name="name">Flujo de trabajo de Equipos de Computo</field>
+            <field name="osv">equipment.control</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <!--Servidores-->
+        <record model="ir.actions.server" id="equipo_a_disponible">
+            <field name="name">Equipos Disponibles</field>
+            <field name="model_id" ref="model_equipment_control"/>
+            <field name="code">
+recs = self.browse(cr, uid, context['active_ids'], context=context)
+recs.accion_disponible()
+            </field>
+        </record>
+
+        <!--Servidores-->
+        <record model="ir.actions.server" id="equipo_a_asignado">
+            <field name="name">Equipos Asignados</field>
+            <field name="model_id" ref="model_equipment_control"/>
+            <field name="code">
+recs = self.browse(cr, uid, context['active_ids'], context=context)
+recs.accion_asignado()
+            </field>
+        </record>
+
+        <!--Servidores-->
+        <record model="ir.actions.server" id="equipo_a_mantenimiento">
+            <field name="name">Equipos en Mantenimiento</field>
+            <field name="model_id" ref="model_equipment_control"/>
+            <field name="code">
+recs = self.browse(cr, uid, context['active_ids'], context=context)
+recs.accion_mantenimiento()
+            </field>
+        </record>
+
+        <!--Servidores-->
+        <record model="ir.actions.server" id="equipo_a_baja">
+            <field name="name">Equipos de Baja</field>
+            <field name="model_id" ref="model_equipment_control"/>
+            <field name="code">
+recs = self.browse(cr, uid, context['active_ids'], context=context)
+recs.accion_baja()
+            </field>
+        </record>
+
+
+
+        <!--Actividades del Flujo de Trabajo-->
+
+        <!--*******Activity Disponible *******************-->
+        <record model="workflow.activity" id="activity_disponible">
+            <field name="name">Disponible</field>
+            <field name="wkf_id" ref="wkf_equipos"/>
+            <field name="flow_start" eval="True"/> <!--flow_start indica Disponible como primera opcion de inicio del workflow-->
+            <field name="kind">dummy</field>
+            <field name="action"></field>
+            <field name="action_id" ref="equipo_a_disponible"/>
+        </record>
+        
+        <!--*******Activity Asignado *******************-->
+        <record model="workflow.activity" id="activity_asignado">
+            <field name="name">Asignado</field>
+            <field name="wkf_id" ref="wkf_equipos"/>
+            <field name="kind">dummy</field>
+            <field name="action"></field>
+            <field name="action_id" ref="equipo_a_asignado"/>
+        </record>
+
+        <!--*******Activity Mantenimiento *******************-->
+        <record model="workflow.activity" id="activity_mantenimiento">
+            <field name="name">Mantenimiento</field>
+            <field name="wkf_id" ref="wkf_equipos"/>
+            <field name="kind">dummy</field>
+            <field name="action"></field>
+            <field name="action_id" ref="equipo_a_mantenimiento"/>
+        </record>
+
+        <!--*******Activity Baja *******************-->
+        <record model="workflow.activity" id="activity_baja">
+            <field name="name">Baja</field>
+            <field name="wkf_id" ref="wkf_equipos"/>
+            <field name="kind">dummy</field>
+            <field name="flow_stop">True</field> 
+            <field name="action"></field>
+            <field name="action_id" ref="equipo_a_baja"/>
+        </record>
+
+
+
+        <!--Transiciones del Flujo de Trabajo-->
+        <!--Disponible a Asignado-->
+        <record model="workflow.transition" id="equipo_disponible_a_asignado">
+            <field name="act_from" ref="activity_disponible"/>
+            <field name="act_to" ref="activity_asignado"/>
+            <field name="signal">button_accion_asignado</field>
+        </record>
+        
+        <!--Asignado a Disponible-->
+        <record model="workflow.transition" id="equipo_asignado_a_disponible">
+            <field name="act_from" ref="activity_asignado"/>
+            <field name="act_to" ref="activity_disponible"/>
+            <field name="signal">button_accion_disponible</field>
+        </record>
+
+
+         <!--Asignado a Mantenimiento-->
+        <record model="workflow.transition" id="equipo_asignado_a_mantenimiento">
+            <field name="act_from" ref="activity_asignado"/>
+            <field name="act_to" ref="activity_mantenimiento"/>
+            <field name="signal">button_accion_mantenimiento</field>
+        </record>
+
+
+         <!--Mantenimiento a Asignado-->
+        <record model="workflow.transition" id="equipo_mantenimiento_a_asignado">
+            <field name="act_from" ref="activity_mantenimiento"/>
+            <field name="act_to" ref="activity_asignado"/>
+            <field name="signal">button_accion_asignado</field>
+        </record>
+
+         <!--Mantenimiento a Disponible-->
+        <record model="workflow.transition" id="equipo_asignado_a_disponible">
+            <field name="act_from" ref="activity_mantenimiento"/>
+            <field name="act_to" ref="activity_disponible"/>
+            <field name="signal">button_accion_disponible</field>
+        </record>
+
+         <!--Mantenimiento a Baja-->
+        <record model="workflow.transition" id="equipo_mante_a_baja">
+            <field name="act_from" ref="activity_mantenimiento"/>
+            <field name="act_to" ref="activity_baja"/>            
+            <field name="signal">button_accion_baja</field>
+        </record>
+    </data>
+</openerp>
