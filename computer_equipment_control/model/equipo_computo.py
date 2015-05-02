@@ -65,14 +65,36 @@ class Control(models.Model):
         self.state = 'baja'
         self.active = False
 
-    
+
+    @api.one
+    def write(self, vals):
+        
+        # import pdb; pdb.set_trace()
+        equipo_cambio_obj = self.env['equipment.cambios']
+        # equipo_cambio_obj = self.pool['equipment.cambios']
+        equipo_cambio_obj.create({
+           'equipo_id': self.id,
+           'tipo_id': self.tipo_id,
+           'ram': self.ram,
+           'dd': self.dd,
+           'procesador_id': self.procesador_id,
+           'software_id': self.software_id,
+           'programas_id': self.programas_id,
+           'responsible_id': self.responsible_id,})
+
+        print "error"
+
+        
+        return super(Control, self).write(vals)
 
 
-    #Metodos creacion de historial
-    def write(self, cr, uid, ids, values, context=None):
-        equipo_cambio_obj = self.pull.get(equipment.cambios)#
-        import pdb; pdb.set_trace()
-        equipo_cambio_obj.create(cr,uid, {
+
+    """@api.multi
+    def write(self, cr, uid, ids, vals, context=None):
+        env = Env(cr, uid, context)         # cr, uid, context wrapped in env
+        recs = env[equipment.cambios]                   # retrieve an instance of MODEL
+        
+        recs.write({
             'equipo_id': self.id,
             'tipo_id': self.tipo_id,
             'ram': self.ram,
@@ -81,17 +103,42 @@ class Control(models.Model):
             'software_id': self.software_id,
             'programas_id': self.programas_id,
             'responsible_id': self.responsible_id,
-            }
+            })
+        print "error"
+        
+        return super(account_invoice, self).write(
+            cr, uid, ids, vals, context=context)
+"""
 
-        )
-        return super(Control, self).write(cr, uid, ids, values, context=context)
+        #equipo_cambio_obj = self.pull.get(equipment.cambios)
+        #import pdb; pdb.set_trace()
+        #equipo_cambio_obj.create(cr,uid, {
+          #  'equipo_id': self.id,
+          #  'tipo_id': self.tipo_id,
+          #  'ram': self.ram,
+          #  'dd': self.dd,
+          #  'procesador_id': self.procesador_id,
+          #  'software_id': self.software_id,
+           # 'programas_id': self.programas_id,
+          #  'responsible_id': self.responsible_id,
+         #   }
+
+        #)
+        
+
+    
+    # Metodos creacion de historial
+    # @api.multi
+    # def write(self, vals):
+        
+        #return super(Control, self).write(vals)
 
 
    # @api.one
     #def create(self, cr, uid, context=None):
        # equipo_cambio_obj = self.pull.get(equipment.cambios)#
         #equipo_cambio_obj.create(cr,uid)
-        return super(Control, self).create(cr, uid, ids, values, context=context)
+        #return super(Control, self).create(cr, uid, ids, values, context=context)
 
         #
     #def unlink(self, cr, uid, ids, values, context=None):

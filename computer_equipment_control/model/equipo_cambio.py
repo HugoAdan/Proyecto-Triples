@@ -11,11 +11,11 @@ class Cambios(models.Model):
     _name = 'equipment.cambios'
 
 
-    equipo_id =  fields.Interger(string="ID Equipo", readonly=True)
+    equipo_id =  fields.Integer(string="ID Equipo", readonly=True)
 
 
     tipo_id = fields.Char(string="Tipo de Equipo", readonly=True)
-	duplicadotipo_id = fields.Char(string="Tipo de Equipo", readonly=True)
+    duplicadotipo_id = fields.Char(string="Tipo de Equipo", readonly=True)
 
 
 
@@ -29,7 +29,7 @@ class Cambios(models.Model):
 
     
     procesador_id = fields.Char(string="Procesador", readonly=True)    
-	duplicadoprocesador_id = fields.Char(string="Procesador", readonly=True)
+    duplicadoprocesador_id = fields.Char(string="Procesador", readonly=True)
 
 
     software_id = fields.Char(string="Sistema Operativo", readonly=True)
@@ -37,8 +37,8 @@ class Cambios(models.Model):
 
 
     programas_id = fields.Char(string="Programas", readonly=True)
-	ducplicadoprogramas_id = fields.Char(string="Programas", readonly=True)
+    ducplicadoprogramas_id = fields.Char(string="Programas", readonly=True)
     
 
     responsible_id = fields.Char(string="Responsable del Equipo", readonly=True)
-	duplicadoresponsible_id = fields.Char(string="Responsable del Equipo", readonly=True)
+    duplicadoresponsible_id = fields.Char(string="Responsable del Equipo", readonly=True)
