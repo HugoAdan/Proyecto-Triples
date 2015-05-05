@@ -62,6 +62,7 @@
                     <field name="id"/>
                     <field name="tipo_id"/>
                     <field name="responsible_id"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>

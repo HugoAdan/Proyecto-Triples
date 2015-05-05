@@ -29,6 +29,7 @@
     'data': [            
            'view/usuario_view.xml',
            'view/equipo_computo_view.xml',
+           'view/equipo_cambios_view.xml',
            'view/sucursales_view.xml',
            'view/depto_view.xml',
            'workflow/equipo_workflow_view.xml',

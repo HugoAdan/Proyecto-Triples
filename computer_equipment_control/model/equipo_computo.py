@@ -33,10 +33,6 @@ class Control(models.Model):
     folio = fields.Char(string="Folio", required=True) # Campo a generarse en la tabla _name
     provider = fields.Char(string="Proveedor", required=True) # Campo a generarse en la tabla _name
     date = fields.Date(string="Fecha", default=fields.Date.today) # Campo a generarse en la tabla _name
-    
-
-    usuarios_ids = fields.One2many('res.users','equipos_ids',string="Equipos")
-
 
     active = fields.Boolean(default=True)
    #Workflow
@@ -68,73 +64,27 @@ class Control(models.Model):
 
     @api.one
     def write(self, vals):
-        
-        # import pdb; pdb.set_trace()
+        print "**************************************"
         equipo_cambio_obj = self.env['equipment.cambios']
-        # equipo_cambio_obj = self.pool['equipment.cambios']
+        # import pdb; pdb.set_trace()
         equipo_cambio_obj.create({
            'equipo_id': self.id,
            'tipo_id': self.tipo_id,
-           'ram': self.ram,
-           'dd': self.dd,
-           'procesador_id': self.procesador_id,
-           'software_id': self.software_id,
-           'programas_id': self.programas_id,
-           'responsible_id': self.responsible_id,})
-
-        print "error"
-
-        
+           })
         return super(Control, self).write(vals)
 
-
-
-    """@api.multi
-    def write(self, cr, uid, ids, vals, context=None):
-        env = Env(cr, uid, context)         # cr, uid, context wrapped in env
-        recs = env[equipment.cambios]                   # retrieve an instance of MODEL
-        
-        recs.write({
-            'equipo_id': self.id,
-            'tipo_id': self.tipo_id,
-            'ram': self.ram,
-            'dd': self.dd,
-            'procesador_id': self.procesador_id,
-            'software_id': self.software_id,
-            'programas_id': self.programas_id,
-            'responsible_id': self.responsible_id,
-            })
-        print "error"
-        
-        return super(account_invoice, self).write(
-            cr, uid, ids, vals, context=context)
-"""
-
-        #equipo_cambio_obj = self.pull.get(equipment.cambios)
-        #import pdb; pdb.set_trace()
-        #equipo_cambio_obj.create(cr,uid, {
-          #  'equipo_id': self.id,
-          #  'tipo_id': self.tipo_id,
-          #  'ram': self.ram,
-          #  'dd': self.dd,
-          #  'procesador_id': self.procesador_id,
-          #  'software_id': self.software_id,
-           # 'programas_id': self.programas_id,
-          #  'responsible_id': self.responsible_id,
-         #   }
-
-        #)
         
 
     
-    # Metodos creacion de historial
-    # @api.multi
-    # def write(self, vals):
-        
-        #return super(Control, self).write(vals)
-
 
    # @api.one
+   #'tipo_id': self.tipo_id,
+   #       'ram': self.ram,
+   #        'dd': self.dd,
+   #       'procesador_id': self.procesador_id,
+   #        'software_id': self.software_id,
+   #        'programas_id': self.programas_id,
+   #        'responsible_id': self.responsible_id,
     #def create(self, cr, uid, context=None):
        # equipo_cambio_obj = self.pull.get(equipment.cambios)#
         #equipo_cambio_obj.create(cr,uid)
