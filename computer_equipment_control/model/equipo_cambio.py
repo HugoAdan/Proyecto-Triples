@@ -63,5 +63,11 @@ class Cambios(models.Model):
            ('mantenimiento', "Mantenimiento"),
            ('baja', "Baja"),
     ], default='disponible')
-    
+
+
+#    name = fields.Char(readonly = True, compute="_get_full_historial")
+#
+#    @api.one
+#    def _get_full_historial(self):
+#        self.name = "Equipo " +str(self.equipo_id.id)
 

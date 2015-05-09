@@ -11,6 +11,9 @@
                     <sheet>
                         <group string="Registro de Equipos">
                             <field name="equipo_id"/>
+                            <field name="tipo_id"/>
+                            <field name="ram"/>
+                            <field name="dd"/>
                         </group>       			
  		        	</sheet>
         		</form>
@@ -24,6 +27,9 @@
             <field name="arch" type="xml">
                 <tree string="equipos">
                     <field name="equipo_id"/>
+                    <field name="tipo_id"/>
+                    <field name="ram"/>
+                    <field name="dd"/>
                 </tree>
             </field>
         </record>
@@ -48,7 +54,7 @@
             <field name="context" eval="{'search_default_equipo_ids': 1}"/>
             <field name="view_mode">tree,form</field>
         </record>
-        <menuitem id="equipo_cambios_menu" name="Cambios en los equipos"
+        <menuitem id="equipo_cambios_menu" name="Historial"
                   parent="sesion_menu"
                   action="equipo_cambios_list_action"/>
     </data>

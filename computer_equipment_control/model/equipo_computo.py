@@ -9,8 +9,10 @@ class Control(models.Model):
     
     _name = 'equipment.control' # String crea entidad tomado por odoo 
                                  #para crear tabla en postgres
-    
-    tipo_id = fields.Many2one("equipment.tipo",
+
+    name = fields.Char(readonly = True, compute="_get_full_historial")
+
+    tipo_id = fields.Many2one('equipment.tipo',
                                     ondelete='set null',string="Tipo de Equipo", index=True)
 
     ram = fields.Float(digits=(3, 3), help="Especificación en GB", string="RAM")
@@ -27,11 +29,11 @@ class Control(models.Model):
 
 
     responsible_id = fields.Many2one("res.users",
-                                    ondelete='set null',string="Responsable del Equipo", index=True)
+                                    ondelete='set null',string="Responsable del Equipo", index=True)  
     
 #Factura - Habilitar)
-    folio = fields.Char(string="Folio", required=True) # Campo a generarse en la tabla _name
-    provider = fields.Char(string="Proveedor", required=True) # Campo a generarse en la tabla _name
+    folio = fields.Char(string="Folio") # Campo a generarse en la tabla _name
+    provider = fields.Char(string="Proveedor") # Campo a generarse en la tabla _name
     date = fields.Date(string="Fecha", default=fields.Date.today) # Campo a generarse en la tabla _name
 
     active = fields.Boolean(default=True)
@@ -41,7 +43,7 @@ class Control(models.Model):
            ('asignado', "Asignado"),
            ('mantenimiento', "Mantenimiento"),
            ('baja', "Baja"),
-    ], default='disponible')
+    ], default='disponible', string="Estado del equipo")
 
     #Metodos para el Workflow
     @api.one
@@ -66,35 +68,57 @@ class Control(models.Model):
     def write(self, vals):
         print "**************************************"
         equipo_cambio_obj = self.env['equipment.cambios']
-        # import pdb; pdb.set_trace()
-        equipo_cambio_obj.create({
-           'equipo_id': self.id,
-           'tipo_id': self.tipo_id,
-           })
+        #import pdb; pdb.set_trace()
+        print vals
+        diccionario = {
+           'equipo_id': self.id or False,
+           'tipo_id': vals.get('tipo_id') or False,
+           'ram': vals.get('ram') or False,
+           'dd': vals.get('dd') or False,
+           'procesador_id': vals.get('procesador_id') or False,
+           'software_id': vals.get('software_id') or False,
+           'programas_id': vals.get('programas_id') or False,
+           'responsible_id': vals.get('responsible_id') or False,
+           }
+        equipo_cambio_obj.create(diccionario)
+        #print self.ram, self.dd
         return super(Control, self).write(vals)
 
-        
+    @api.one
+    def create(self, vals):
+        print "Create**************************************"
+        equipo_cambio_obj = self.env['equipment.cambios']
+        #import pdb; pdb.set_trace()
+        print "create", vals
+        diccionario = {
+           'equipo_id': self.id or vals.get('id') or False,
+           'tipo_id': vals.get('tipo_id') or False,
+           'ram': vals.get('ram') or False,
+           'dd': vals.get('dd') or False,
+           'procesador_id': vals.get('procesador_id') or False,
+           'software_id': vals.get('software_id') or False,
+           'programas_id': vals.get('programas_id') or False,
+           'responsible_id': vals.get('responsible_id') or False,
+           }
+        equipo_cambio_obj.create(diccionario)
+        #print self.ram, self.dd
+        return super(Control, self).create(vals)
+
+
+
+
+
+
 
     
 
-   # @api.one
-   #'tipo_id': self.tipo_id,
-   #       'ram': self.ram,
-   #        'dd': self.dd,
-   #       'procesador_id': self.procesador_id,
-   #        'software_id': self.software_id,
-   #        'programas_id': self.programas_id,
-   #        'responsible_id': self.responsible_id,
-    #def create(self, cr, uid, context=None):
-       # equipo_cambio_obj = self.pull.get(equipment.cambios)#
-        #equipo_cambio_obj.create(cr,uid)
-        #return super(Control, self).create(cr, uid, ids, values, context=context)
 
-        #
-    #def unlink(self, cr, uid, ids, values, context=None):
-        #equipo_cambio_obj = self.pull.get(equipment.cambios)#
-        #equipo_cambio_obj.create(cr,uid)
-    #    return super(Control, self).unlink(cr, uid, ids, values, context=context)
+    @api.one
+    def _get_full_historial(self):
+        self.name = "Equipo " +str(self.id)
+
+
+
 
        
 

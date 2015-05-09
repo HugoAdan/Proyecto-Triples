@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--Estructura del reporte-->
+        <report
+        id="reporte_resguardo"
+        model="equipment.control"
+        string="Imprimir Resguardo"
+        name="computer_equipment_control.reporte_resguardo_view"
+        file="computer_equipment_control.reporte_resguardo"
+        report_type="qweb-pdf" />
+        <!--Report template-->
+        <template id="reporte_resguardo_view">
+        <pageTemplate id="main">
+            <pageGraphics>
+            <image file="/addons/reportes/LogoTRIPLES.png" x="6" y="0" width="21.5cm" height="21.5cm"/>
+            </pageGraphics>
+                <frame id="first" x1="78" y1="-3.8cm" width="451" height="698"/>
+        </pageTemplate>
+            <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <h2 t-field="doc.name"/>
+                        <h2 t-field="doc.tipo_id.responsible_id.name"/>
+                        <h2 t-field="doc.ram.name"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+        </template>
+
+    </data>
+</openerp>

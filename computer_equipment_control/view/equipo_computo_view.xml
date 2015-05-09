@@ -59,7 +59,7 @@
             <field name="model">equipment.control</field>
             <field name="arch" type="xml">
                 <tree string="equipos">
-                    <field name="id"/>
+                    <field name="name"/>
                     <field name="tipo_id"/>
                     <field name="responsible_id"/>
                     <field name="state"/>
