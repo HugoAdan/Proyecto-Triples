@@ -84,7 +84,7 @@ class Control(models.Model):
         #print self.ram, self.dd
         return super(Control, self).write(vals)
 
-    @api.one
+    @api.model
     def create(self, vals):
         print "Create**************************************"
         equipo_cambio_obj = self.env['equipment.cambios']
