@@ -90,8 +90,9 @@ class Control(models.Model):
         equipo_cambio_obj = self.env['equipment.cambios']
         #import pdb; pdb.set_trace()
         print "create", vals
+        re = super(Control, self)
         diccionario = {
-           'equipo_id': self.id or vals.get('id') or False,
+           'equipo_id': re.id or vals.get('id') or False,
            'tipo_id': vals.get('tipo_id') or False,
            'ram': vals.get('ram') or False,
            'dd': vals.get('dd') or False,
@@ -102,8 +103,8 @@ class Control(models.Model):
            }
         equipo_cambio_obj.create(diccionario)
         #print self.ram, self.dd
-        return super(Control, self).create(vals)
-
+        print re
+        return re
 
 
 
