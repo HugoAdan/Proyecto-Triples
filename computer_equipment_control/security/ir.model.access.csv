@@ -1,2 +1,10 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_equipment_sucursal,access_equipment_sucursal,model_equipment_sucursal,,1,1,1,1
+access_equipment_depto,access_equipment_depto,model_equipment_depto,,1,1,1,1
+access_equipment_cambios,access_equipment_cambios,model_equipment_cambios,,1,1,1,1
+access_equipment_control,access_equipment_control,model_equipment_control,,1,1,1,1
+access_equipment_so,access_equipment_so,model_equipment_so,,1,1,1,1
+access_equipment_tipo,access_equipment_tipo,model_equipment_tipo,,1,1,1,1
+access_equipment_programas,access_equipment_programas,model_equipment_programas,,1,1,1,1
+access_equipment_procesador,access_equipment_procesador,model_equipment_procesador,,1,1,1,1
+access_equipment_dispositivosexternos,access_equipment_dispositivosexternos,model_equipment_dispositivosexternos,,1,1,1,1

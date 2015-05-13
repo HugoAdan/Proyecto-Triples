@@ -1,34 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!--Estructura del reporte-->
+        <!--Definición del reporte-->
         <report
-        id="reporte_resguardo"
+        id="report_resguardo"
         model="equipment.control"
-        string="Imprimir Resguardo"
-        name="computer_equipment_control.reporte_resguardo_view"
-        file="computer_equipment_control.reporte_resguardo"
-        report_type="qweb-pdf" />
-        <!--Report template-->
-        <template id="reporte_resguardo_view">
-        <pageTemplate id="main">
-            <pageGraphics>
-            <image file="/addons/reportes/LogoTRIPLES.png" x="6" y="0" width="21.5cm" height="21.5cm"/>
-            </pageGraphics>
-                <frame id="first" x1="78" y1="-3.8cm" width="451" height="698"/>
-        </pageTemplate>
-            <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="report.external_layout">
-                    <div class="page">
-                        <h2 t-field="doc.name"/>
-                        <h2 t-field="doc.tipo_id.responsible_id.name"/>
-                        <h2 t-field="doc.ram.name"/>
-                    </div>
-                </t>
-            </t>
-        </t>
-        </template>
+        string="Resguardo"
+        name="computer_equipment_control.equipment_view_report"
+        file="computer_equipment_control.report_resguardo"
+        report_type="qweb-pdf"/>
 
+        
+        <!--Plantilla del Reporte-->
+        <template id="equipment_view_report">
+            <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="doc">              
+                    <div class="page">
+                        <h3>Departamento de Tecnologías de Información</h3>
+                        <h4>Resguardo de Equipo de Cómputo</h4>  
+                        
+                        <div class="row mt32 mb32">
+                        <div class="col-xs-6">
+                            <strong>Fecha: <span t-field="doc.date"/></strong>
+                        </div>
+                        </div>
+
+                        <div class="row mt32 mb32">
+                        <div class="col-xs-9">
+                            <p>Equipo entregado a resguardo con las siguientes características</p>
+                        </div>
+                        </div>
+
+                    <table class="tabla caracteristicas">
+                        <thead>
+                        <tr class="border-black">
+                            <th>Característica</th>
+                            <th>Descripción</th>
+                        </tr>
+                        </thead>
+                        <tbody class="equipo_tbody">
+                        <tr>
+                            <td>
+                                ID
+                            </td>
+                            <td>
+                                <span t-field="doc.name"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Tipo
+                            </td>
+                            <td>
+                                <span t-field="doc.tipo_id.name"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                               Procesador
+                            </td>
+                            <td>
+                                <span t-field="doc.procesador_id.name"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                Sistema Operativo
+                            </td>
+                            <td>
+                                <span t-field="doc.software_id.name"/>
+                            </td>
+                        </tr>
+                         </tbody>
+                     </table>
+
+                        <div class="row mt32 mb32">
+                        <div class="col-xs-12">
+                        <p>Me comprometo a devolver el equipo en las mismas condiciones en el que me fue entregado, tomando en cuenta el desgaste natural por el uso del mismo, además de acatar las políticas de uso de equipo de TI.
+                        http://hd.elmaraton.mx:9675/portal/page/17-política-de-uso-de-equipo-de-ti</p>
+                        </div>
+                        </div>
+
+                        <div class="row mt32 mb32">
+                        <div class="col-xs-6">                   
+                        <p>___________________________________</p>
+                        <h4 t-field="doc.responsible_id.name"/>                        
+                        <p>Nombre del Usuario</p>
+                        <p>Depto. Tecnologías de Información</p>
+                        </div>
+                        </div>
+                        
+                    </div>                
+            </t>
+            </t>
+        </template> 
     </data>
 </openerp>
