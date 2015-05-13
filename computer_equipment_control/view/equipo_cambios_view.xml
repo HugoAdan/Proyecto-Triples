@@ -9,11 +9,14 @@
             <field name="arch" type="xml">
         		<form string="Equipo Form">
                     <sheet>
-                        <group string="Registro de Equipos">
-                            <field name="equipo_id"/>
+                        <group string="Último cambio...">
+                            <field name="responsible_id"/>
                             <field name="tipo_id"/>
                             <field name="ram"/>
                             <field name="dd"/>
+                            <field name="procesador_id"/>
+                            <field name="software_id"/>
+                            <field name="programas_id"/>
                         </group>       			
  		        	</sheet>
         		</form>
@@ -28,8 +31,7 @@
                 <tree string="equipos">
                     <field name="equipo_id"/>
                     <field name="tipo_id"/>
-                    <field name="ram"/>
-                    <field name="dd"/>
+                    <field name="date">Fecha de modificación</field>
                 </tree>
             </field>
         </record>

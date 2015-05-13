@@ -6,16 +6,16 @@
         id="report_resguardo"
         model="equipment.control"
         string="Resguardo"
-        name="computer_equipment_control.equipment_view_report"
-        file="Resguardo_de_Equipo"
+        name="resguardo_de_equipo"
+        file="computer_equipment_control.equipment_view_report"
         report_type="qweb-pdf"/>        
         <!--Plantilla del Reporte-->
         <template id="equipment_view_report">
             <t t-call="report.html_container">
             <t t-foreach="docs" t-as="doc">            
                     <div class="page">
-                        <h3 class="text-center">Departamento de Tecnologías de Información</h3>
-                        <h4 class="text-center">Resguardo de Equipo de Cómputo</h4>
+                        <h2 class="text-center"><strong>Departamento de Tecnologías de Información</strong></h2>
+                        <h3 class="text-center">Resguardo de Equipo de Cómputo</h3>
                         
                         <div class="text-rigth">
                         <div class="col-xs-12">
@@ -73,9 +73,9 @@
 
                         <div class="row mt32 mb32">
                         <div class="col-xs-12">
-                        <p>Me comprometo a devolver el equipo en las mismas condiciones en el que me fue entregado, tomando en cuenta el desgaste natural por el uso del mismo, además de acatar las políticas de uso de equipo de TI.
-                        http://hd.elmaraton.mx:9675/portal/page/17-política-de-uso-de-equipo-de-ti
-                        
+                        <p class="lead"><h4>Me comprometo a devolver el equipo en las mismas condiciones en el que me fue entregado, tomando en cuenta el desgaste natural por el uso del mismo, además de acatar las políticas de uso de equipo de TI.
+                        <em>http://hd.elmaraton.mx:9675/portal/page/17-política-de-uso-de-equipo-de-ti</em>
+                        </h4>
                         </p>
                         </div>
                         </div>

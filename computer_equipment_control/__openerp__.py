@@ -34,6 +34,7 @@
            'view/depto_view.xml',
            'workflow/equipo_workflow_view.xml',
            'reportes/reporte_resguardo.xml',
+           #'security/seguridad.xml',
            'security/ir.model.access.csv'
     ],
     # only loaded in demonstration mode

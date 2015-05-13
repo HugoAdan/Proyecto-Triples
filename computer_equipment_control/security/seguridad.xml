@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <!--Definition group, linked with id to acces_list in csv-->
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="name">Permisos</field>
+        </record>
+
+        <!--Definición de reglas-->
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="equipment_depto_view" eval="[(4, ref('computer_equipment_control.depto'))]"/>
+        </record>
+
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="equipo_computo_view" eval="[(4, ref('computer_equipment_control.equipo_computo'))]"/>
+        </record>
+
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="equipment_cambios_view" eval="[(4, ref('computer_equipment_control.equipo_cambio'))]"/>
+        </record>
+
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="equipment_sucursales_view" eval="[(4, ref('computer_equipment_control.sucursales'))]"/>
+        </record>
+
+        <record id="equipocontrol_grupo_permisos" model="res.groups">
+            <field name="res_user_alias_form_view" eval="[(4, ref('computer_equipment_control.usuario'))]"/>
+        </record>
+
+    </data>
+</openerp>
