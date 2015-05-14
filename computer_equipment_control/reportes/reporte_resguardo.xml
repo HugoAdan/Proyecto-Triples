@@ -6,27 +6,34 @@
         id="report_resguardo"
         model="equipment.control"
         string="Resguardo"
-        name="resguardo_de_equipo"
-        file="computer_equipment_control.equipment_view_report"
+        name="computer_equipment_control.equipment_view_report"
+        file="Resguardo_de_Equipo"
         report_type="qweb-pdf"/>        
         <!--Plantilla del Reporte-->
         <template id="equipment_view_report">
             <t t-call="report.html_container">
-            <t t-foreach="docs" t-as="doc">            
+            <t t-foreach="docs" t-as="doc">              
+                <t t-call="report.external_layout">       
                     <div class="page">
-                        <h2 class="text-center"><strong>Departamento de Tecnologías de Información</strong></h2>
-                        <h3 class="text-center">Resguardo de Equipo de Cómputo</h3>
-                        
+                        <h2 ><strong>Departamento de Tecnologías de Información</strong></h2>
+                        <div class="row mt32 mb32">
+                        </div>
+
+                        <h3 class="text-center"><strong>Departamento de Tecnologías de Información</strong></h3>
+                        <h4 class="text-center">Resguardo de Equipo de Cómputo</h4>
+
                         <div class="text-rigth">
                         <div class="col-xs-12">
                             <p class="text-right"><strong>Fecha: <span t-field="doc.date"/></strong></p>
                         </div>
+
+                        <div class="row mt32 mb32">
                         </div>
 
                         <div class="text-rigth">
                             <p>Equipo entregado a resguardo con las siguientes características:</p>
                         </div>
-
+                        </div>
                     <table class="table table-condensed">
                         <thead>
                         <tr>
@@ -71,13 +78,11 @@
                         </table>
                      </div>
 
-                        <div class="row mt32 mb32">
                         <div class="col-xs-12">
-                        <p class="lead"><h4>Me comprometo a devolver el equipo en las mismas condiciones en el que me fue entregado, tomando en cuenta el desgaste natural por el uso del mismo, además de acatar las políticas de uso de equipo de TI.
+                        <p class="lead"><h5>Me comprometo a devolver el equipo en las mismas condiciones en el que me fue entregado, tomando en cuenta el desgaste natural por el uso del mismo, además de acatar las políticas de uso de equipo de TI.
                         <em>http://hd.elmaraton.mx:9675/portal/page/17-política-de-uso-de-equipo-de-ti</em>
-                        </h4>
+                        </h5>
                         </p>
-                        </div>
                         </div>
 
                         <div class="row mt32 mb32">
@@ -97,18 +102,16 @@
 
                         <div class="row mt32 mb32">
                         </div>
-
                         <div class="row mt32 mb32">
-                        </div>
-                        
-                                        
+                        </div>      
                         <p></p>
                         <p>Depto. Tecnologías de Información</p>
                         </div>
                         </div>
                         
                     </div>                
-            </t>
+                </t>
+            </t>   
             </t>
         </template> 
     </data>
