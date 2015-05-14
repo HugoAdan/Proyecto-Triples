@@ -10,7 +10,7 @@ class Control(models.Model):
     _name = 'equipment.control' # String crea entidad tomado por odoo 
                                  #para crear tabla en postgres
 
-    name = fields.Char(readonly = True, compute="_get_full_historial")
+    name = fields.Char(readonly = True, compute="_get_full_historial", string="ID")
 
     tipo_id = fields.Many2one('equipment.tipo',
                                     ondelete='set null',string="Tipo de Equipo", index=True)

@@ -4,6 +4,7 @@
         <!--Definition group, linked with id to acces_list in csv-->
         <record id="equipocontrol_grupo_permisos" model="res.groups">
             <field name="name">Permisos</field>
+            <field name="users" model="res.users"/>
         </record>
 
         <!--Definición de reglas-->
