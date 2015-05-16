@@ -2,31 +2,55 @@
 <openerp>
     <data noupdate="0">
         <!--Definition group, linked with id to acces_list in csv-->
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="name">Permisos</field>
-            <field name="users" model="res.users"/>
+        <record id="equipocontrol_grupo_admin" model="res.groups">
+            <field name="name">Grupo Administrador</field>
+             <field name="users" model="res.users" search="[('name', '=', 'Administrator')]" />
         </record>
 
-        <!--Definición de reglas-->
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="equipment_depto_view" eval="[(4, ref('computer_equipment_control.depto'))]"/>
+        <record id="equipocontrol_grupo_coordinador" model="res.groups">
+            <field name="name">Grupo Coordinador</field>
+        </record>
+        
+        <record id="equipocontrol_grupo_auxiliar" model="res.groups">
+            <field name="name">Grupo Auxiliar</field>
         </record>
 
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="equipo_computo_view" eval="[(4, ref('computer_equipment_control.equipo_computo'))]"/>
+        <!--Definición de reglas para el Adminsitrador-->
+        <record id="equipocontrol_grupo_admin" model="res.groups">
+            <field name="menu_access" eval="[(6, 0, [
+                    ref('computer_equipment_control.sesion_menu'),
+                    ref('computer_equipment_control.sistema_menu'),
+                    ref('computer_equipment_control.equipo_menu'),
+                    ref('computer_equipment_control.equipo_cambios_menu'),
+                    ref('computer_equipment_control.sucursal_menu'),
+                    ref('computer_equipment_control.deptos_menu')
+                    ])]"/>
         </record>
 
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="equipment_cambios_view" eval="[(4, ref('computer_equipment_control.equipo_cambio'))]"/>
+        <!--Definición de reglas para el Coordinador-->
+        <record id="equipocontrol_grupo_coordinador" model="res.groups">
+            <field name="menu_access" eval="[(6, 0, [
+                    ref('computer_equipment_control.sesion_menu'),
+                    ref('computer_equipment_control.sistema_menu'),
+                    ref('computer_equipment_control.equipo_menu'),
+                    ref('computer_equipment_control.equipo_cambios_menu'),
+                    ref('computer_equipment_control.sucursal_menu'),
+                    ref('computer_equipment_control.deptos_menu')
+                    ])]"/>
         </record>
 
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="equipment_sucursales_view" eval="[(4, ref('computer_equipment_control.sucursales'))]"/>
-        </record>
 
-        <record id="equipocontrol_grupo_permisos" model="res.groups">
-            <field name="res_user_alias_form_view" eval="[(4, ref('computer_equipment_control.usuario'))]"/>
+        <!--Definición de reglas para el Auxiliar-->
+        <record id="equipocontrol_grupo_auxiliar" model="res.groups">
+            <field name="menu_access" eval="[(6, 0, [
+                    ref('computer_equipment_control.sesion_menu'),
+                    ref('computer_equipment_control.equipo_menu'),
+                    ref('computer_equipment_control.sucursal_menu'),
+                    ref('computer_equipment_control.deptos_menu')
+                    ])]"/>
         </record>
+        
+
 
     </data>
 </openerp>

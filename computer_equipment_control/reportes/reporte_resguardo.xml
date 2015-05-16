@@ -53,6 +53,17 @@
                         </tr>
 
                         <tr>
+                            <td>Memoria RAM</td>
+                            <td><span t-field="doc.ram"/></td>
+                        </tr>
+
+                        <tr>
+                            <td>Disco Duro</td>
+                            <td><span t-field="doc.dd"/></td>
+                        </tr>
+
+
+                        <tr>
                             <td>Procesador</td>
                             <td><span t-field="doc.procesador_id.name"/></td>
                         </tr>
@@ -113,6 +124,6 @@
                 </t>
             </t>   
             </t>
-        </template> 
+        </template>
     </data>
 </openerp>
