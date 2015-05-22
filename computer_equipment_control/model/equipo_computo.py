@@ -15,8 +15,8 @@ class Control(models.Model):
     tipo_id = fields.Many2one('equipment.tipo',
                                     ondelete='set null',string="Tipo de Equipo", index=True)
 
-    ram = fields.Float(digits=(3, 3), help="Especificación en GB", string="RAM")
-    dd = fields.Float(digits=(3, 0), help="Especificación de GB", string="Disco Duro")
+    ram = fields.Float(digits=(3, 3), help="Especificación en GB", string="RAM", required=True)
+    dd = fields.Float(digits=(3, 0), help="Especificación de GB", string="Disco Duro", required=True)
 
     procesador_id = fields.Many2one("equipment.procesador",
                                     ondelete='set null',string="Procesador", index=True)
@@ -149,8 +149,8 @@ class programas(models.Model):
     name = fields.Char(readonly = True,compute="_get_full_programa")
     program_name =  fields.Char(string="Nombre", required=True, default="Programa")
     version = fields.Char(string="Version", required=True, default="Version")
-    licencia = fields.Char(string="Licencia", required=True, default="")
-    descripcion = fields.Char(string="Descripcion", required=True, default="")
+    licencia = fields.Char(string="Licencia", default="")
+    descripcion = fields.Char(string="Descripcion", default="")
     
     
  

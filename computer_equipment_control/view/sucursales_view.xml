@@ -17,24 +17,14 @@
                             <field name="number"/>
                             <field name="responsible_id"/>
         				</group>
-                        <notebook>
-                            <page string="Departamentos">
-                                <field name="deptos_ids">
-                                    <tree string="Registered sessions" editable = "bottom">
-                                        <field name="name"/>
-                                        <field name="responsable_id"/>
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
+                        <group>
+                            <label for="deptos_ids"/>
+                            <field name="deptos_ids"/>
+                        </group>
  		        	</sheet>
         		</form>
         	</field> 
         </record>
-
-        
-
-
         <!--Vista Tree-->
         <record model="ir.ui.view" id="sucursal_tree_view">
             <field name="name">sucursal.tree.view</field>
@@ -48,9 +38,6 @@
             </field>
         </record>
 
-
-
-
         <record model="ir.actions.act_window" id="sucursal_list_action">
             <field name="name">Sucursales</field>
             <field name="res_model">equipment.sucursal</field>
@@ -61,8 +48,5 @@
                   parent="sesion_menu"
                   action="sucursal_list_action"/>
     </data>
-
-
-
 
 </openerp>

@@ -5,7 +5,7 @@ from openerp import api, exceptions, fields, models, _
 """
 Este modulo crea el modelo Cambios
 """
-#Se crea la clase Cambios
+#Se crea la clase Historial
 class Cambios(models.Model):
 
     _name = 'equipment.cambios'

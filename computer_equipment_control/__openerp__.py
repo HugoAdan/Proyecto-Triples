@@ -22,10 +22,10 @@
     'category': 'Generic Modules',
     'version': '0.1',
 
-    # any module necessary for this one to work correctly
+    
     'depends': ['base',],
 
-    # always loaded
+    # Vistas Cargadas
     'data': [            
            'view/usuario_view.xml',
            'view/equipo_computo_view.xml',
@@ -37,9 +37,9 @@
            'security/seguridad.xml',
            'security/ir.model.access.csv'
     ],
-    # only loaded in demonstration mode
+  
     'demo': [
-        #'demo/openacademy_course_demo.xml',
+        
     ],
     'installable':True,
 }
