@@ -11,7 +11,7 @@
                     <header>
                         <button name="button_accion_disponible" type="workflow"
                                 string="Disponible"
-                                states="mantenimiento,asignado"/>
+                                states="mantenimiento"/>
 
                         <button name="button_accion_asignado" type="workflow"
                                 string="Asignado" 
